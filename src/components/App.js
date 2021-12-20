@@ -23,11 +23,23 @@ function App() {
 						<Route exact path="/login" element={<PublicRoute />}>
 							<Route exact path="/login" element={<Login />} />
 						</Route>
-						<Route exact path="/quiz" element={<PrivateRoute />}>
-							<Route exact path="/quiz" element={<Quiz />} />
+						<Route
+							exact
+							path="/quiz/:id"
+							element={<PrivateRoute />}
+						>
+							<Route exact path="/quiz/:id" element={<Quiz />} />
 						</Route>
-						<Route exact path="/result" element={<PrivateRoute />}>
-							<Route exact path="/result" element={<Result />} />
+						<Route
+							exact
+							path="/result/:id"
+							element={<PrivateRoute />}
+						>
+							<Route
+								exact
+								path="/result/:id"
+								element={<Result />}
+							/>
 						</Route>
 					</Routes>
 				</Layout>
