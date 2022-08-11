@@ -2,7 +2,7 @@ import { useState, useEffect, useReducer } from "react";
 import Answers from "../Answers";
 import ProgressBar from "../ProgressBar";
 import MiniPlayer from "../MiniPlayer";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import useQuestions from "../../hooks/useQuestions";
 import _ from "lodash";
 import { useAuth } from "../../contexts/AuthContext";
@@ -35,6 +35,9 @@ const Quiz = () => {
 	const [qna, dispatch] = useReducer(reducer, initialState);
 	const { currentuser } = useAuth();
 	const navigate = useNavigate();
+	const location = useLocation();
+	const { state } = location;
+	const { videoTitle } = state;
 
 	useEffect(() => {
 		dispatch({
@@ -106,7 +109,7 @@ const Quiz = () => {
 						progress={percentage}
 						submit={submit}
 					/>
-					<MiniPlayer />
+					<MiniPlayer id={id} title={videoTitle} />
 				</>
 			)}
 		</>
